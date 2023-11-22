@@ -32,12 +32,12 @@ I developed several utility function to help in this assignment
 
 
 When test correlation for all 'Chevrolet' models, year had significant correction and odometer notable negative correlation
-price                 1.000000
-year                  0.486560
-condition             0.028224
-manufacturer_model    0.001751
-odometer             -0.323382
-Name: price, dtype: float64
+- price                 1.000000
+- year                  0.486560
+- condition             0.028224
+- manufacturer_model    0.001751
+- odometer             -0.323382
+- Name: price, dtype: float64
 
 When searching for the best correlating Chevrolet model, it was
 Brand:       Chevrolet
@@ -51,22 +51,22 @@ odometer    -0.789283
 This is also nicely visible in the heatmap.
 
 I tested several predictional models:
-linear_model = LinearRegression()
-random_forest_model = RandomForestRegressor(n_estimators=100, random_state=42)
-gb_model = GradientBoostingRegressor(random_state=42)
-ridge_model = Ridge(alpha=1.0)
-lasso_model = Lasso(alpha=0.001)
+- linear_model = LinearRegression()
+- random_forest_model = RandomForestRegressor(n_estimators=100, random_state=42)
+- gb_model = GradientBoostingRegressor(random_state=42)
+- ridge_model = Ridge(alpha=1.0)
+- lasso_model = Lasso(alpha=0.001)
 
-Mean Squared Error Linear: 24303473.101552382
-R^2 Score Linear: 0.8061823095944434
-Mean Squared Error Ridge: 24303446.008851625
-R^2 Score Ridge: 0.8061825256559365
-Mean Squared Error Lasso: 24303473.05861214
-R^2 Score Lasso: 0.8061823099368874
-Mean Squared Error Random Forest: 14389334.538277978
-R^2 Score Random Forest: 0.8852465417173728
-Mean Squared Error Gradient Boosting: 18961781.52669878
-R^2 Score Gradient Boosting: 0.8487817487598199
+- Mean Squared Error Linear: 24303473.101552382
+- R^2 Score Linear: 0.8061823095944434
+- Mean Squared Error Ridge: 24303446.008851625
+- R^2 Score Ridge: 0.8061825256559365
+- Mean Squared Error Lasso: 24303473.05861214
+- R^2 Score Lasso: 0.8061823099368874
+- Mean Squared Error Random Forest: 14389334.538277978
+- R^2 Score Random Forest: 0.8852465417173728
+- Mean Squared Error Gradient Boosting: 18961781.52669878
+- R^2 Score Gradient Boosting: 0.8487817487598199
 
 Therefore I selected Random Forest model.
 
@@ -75,28 +75,30 @@ I shall continue working on feature engineering and precition model test to find
 also my ulity functions have some overhead to copy the original data multiple times and I can likely optimze that to make this process much faster.
 predictions you can see from adove.
 
-My customer was asking how much she would get from 2014 Mercedes-Benz, mileage: 50000 and condition: good
-My model says: $23023
+- My customer was asking how much she would get from 2014 Mercedes-Benz, mileage: 50000 and condition: good
+- My model says: $23023
 
-car_details8 = {
-    'manufacturer': 'mercedes-benz',
-    'carmodel': 'm-class',
-    'year': 2014,
-    'condition': 'good',
-    'odometer': 50000
+```
+car_details8 = {  
+  'manufacturer': 'mercedes-benz',  
+  'carmodel': 'm-class',  
+  'year': 2014,  
+  'condition': 'good',  
+  'odometer': 50000  
 }
+```
 
-pred_price = predict_price_feat(random_forest_model, **car_details8)
-printcar(car_details8)
-print(f"random_forest model predicted price: ${pred_price}")
-print("\n")
+- pred_price = predict_price_feat(random_forest_model, **car_details8)
+- printcar(car_details8)
+- print(f"random_forest model predicted price: ${pred_price}")
+- print("\n")
 
-manufacturer: mercedes-benz
-carmodel: m-class
-year: 2014
-condition: good
-odometer: 50000
-random_forest model predicted price: $23023.6025
+- manufacturer: mercedes-benz
+- carmodel: m-class
+- year: 2014
+- condition: good
+- odometer: 50000
+- random_forest model predicted price: $23023.6025
 
-#reference column from the dataset
-#7315746793,birmingham,24997,2014,mercedes-benz,m-class,,8 cylinders,gas,82553,clean,automatic,4JGDA7DBXEA336979,,,SUV,blue,al
+- #reference column from the dataset
+- #7315746793,birmingham,24997,2014,mercedes-benz,m-class,,8 cylinders,gas,82553,clean,automatic,4JGDA7DBXEA336979,,,SUV,blue,al
